@@ -2,24 +2,25 @@
 
 ## Objective
 
-Simulate a common Help Desk request where Human Resources has hired a new employee. Create the user account in Active Directory, assign the appropriate security group, and verify the configuration using both Active Directory Users and Computers (ADUC) and PowerShell.
+Simulate a common Help Desk request by creating a new Active Directory user account for a recently hired employee. Demonstrate how to provision the account, assign the appropriate security group, configure initial account settings, and verify the configuration using both Active Directory Users and Computers (ADUC) and PowerShell.
 
 ---
 
-## Ticket Information
+# Ticket Information
 
-| Field | Value |
-|------|-------|
-| Ticket ID | HD-003 |
-| Priority | Medium |
-| Category | User Administration |
-| Status | Completed |
+**Ticket ID:** HD-003
+
+**Priority:** Medium
+
+**Category:** User Administration
+
+**Status:** Completed
 
 ---
 
 ## Scenario
 
-Human Resources submitted a request to create a new Active Directory account for a recently hired employee.
+Human Resources submitted a request to create a new Active Directory account for a newly hired employee.
 
 Employee Information:
 
@@ -27,13 +28,13 @@ Employee Information:
 - **Username:** ecarter
 - **Department:** Sales
 
-Requested Tasks:
+The Help Desk was responsible for:
 
-- Create the Active Directory user account
-- Place the user in the Company Users OU
-- Add the user to the Sales security group
-- Require a password change at first logon
-- Verify configuration using PowerShell
+- Creating the Active Directory user account.
+- Placing the account in the appropriate Organizational Unit.
+- Assigning the correct security group.
+- Requiring a password change at first logon.
+- Verifying the account configuration.
 
 ---
 
@@ -43,24 +44,37 @@ Requested Tasks:
 |------|-------|
 | Domain | adlab.local |
 | Domain Controller | DC01 |
-| Client | Windows 11 Client |
-| Management Tool | Active Directory Users and Computers |
-| PowerShell | ActiveDirectory Module |
+| Client | CLIENT01 |
+| User | Emily Carter (ecarter) |
+| Operating System | Windows Server 2022 |
+| Management Tools | Active Directory Users and Computers (ADUC), PowerShell |
 
 ---
 
-## Procedure
+## Investigation
 
-### 1. Create the User Account
+Verified the onboarding request submitted by Human Resources.
 
-Opened **Active Directory Users and Computers** and navigated to:
+Confirmed the **Company → Users** Organizational Unit existed for user accounts.
 
-```
+Verified the **Sales** security group already existed and was available for assignment.
+
+Reviewed the requested account information before creating the new user.
+
+---
+
+# Resolution
+
+Opened **Active Directory Users and Computers (ADUC)**.
+
+Navigated to:
+
+```text
 Company
 └── Users
 ```
 
-Created a new user with the following information:
+Created a new Active Directory user account using the following information:
 
 | Property | Value |
 |----------|-------|
@@ -68,54 +82,43 @@ Created a new user with the following information:
 | Last Name | Carter |
 | Username | ecarter |
 
-Configured the account to require a password change during the first successful sign-in.
+Configured the account to require a password change at the next successful sign-in.
 
-Screenshot:
+Added the user to the **Sales** Active Directory security group.
 
-`HD-003-01-New-User-Wizard.png`
+Verified the group membership using both ADUC and PowerShell.
 
----
+Executed the following PowerShell commands:
 
-### 2. Verify User Creation
+```powershell
+Get-ADUser ecarter -Properties MemberOf |
+Select-Object Name,@{Name="Groups";Expression={$_.MemberOf}}
 
-Confirmed that the new user account appeared in the **Company → Users** Organizational Unit.
+Get-ADPrincipalGroupMembership ecarter |
+Format-Table Name,GroupScope
+```
 
-Screenshot:
-
-`HD-003-02-User-Created.png`
-
----
-
-### 3. Assign Security Group
-
-Opened the user's **Member Of** tab and added the account to the **Sales** security group.
-
-Verified membership included:
+Confirmed the account was a member of:
 
 - Domain Users
 - Sales
 
-Screenshot:
+---
 
-`HD-003-03-User-Group-Membership.png`
+## Validation
+
+Completed the following validation tests:
+
+- ✅ Active Directory user account successfully created
+- ✅ User account located in the Company → Users Organizational Unit
+- ✅ Sales security group assigned
+- ✅ Password change required at next logon
+- ✅ Group membership verified using ADUC
+- ✅ Group membership verified using PowerShell
 
 ---
 
-### 4. Verify Group Membership
-
-Opened the **Sales** security group and confirmed Emily Carter appeared as a member.
-
-Screenshot:
-
-`HD-003-04-Sales-Group-Members.png`
-
----
-
-### 5. PowerShell Verification
-
-Verified the account and group membership using PowerShell.
-
-Commands used:
+## PowerShell / Commands Used
 
 ```powershell
 Get-ADUser ecarter -Properties MemberOf |
@@ -125,58 +128,38 @@ Get-ADPrincipalGroupMembership ecarter |
 Format-Table Name,GroupScope
 ```
 
-PowerShell confirmed:
-
-- User account exists
-- Member of Domain Users
-- Member of Sales security group
-
-Screenshot:
-
-`HD-003-05-PowerShell-Verification.png`
-
 ---
 
-## Resolution
+## Result
 
-Successfully created the new Active Directory user account for Emily Carter.
+✔ Active Directory user account successfully created
 
-The account was:
+✔ User added to the Sales security group
 
-- Created successfully
-- Added to the Sales security group
-- Configured to change password at first logon
-- Verified through both ADUC and PowerShell
+✔ Password change enforced at next logon
 
-The onboarding request was completed successfully.
+✔ Group membership successfully verified
 
----
+✔ User account provisioned according to company standards
 
-## Verification Checklist
-
-- ✅ User account created
-- ✅ User visible in Company → Users
-- ✅ Added to Sales security group
-- ✅ Password change required at first logon
-- ✅ Verified using PowerShell
-
----
-
-## Commands Used
-
-```powershell
-Get-ADUser ecarter -Properties MemberOf |
-Select-Object Name,@{Name="Groups";Expression={$_.MemberOf}}
-
-Get-ADPrincipalGroupMembership ecarter |
-Format-Table Name,GroupScope
-```
+✔ Ticket resolved successfully
 
 ---
 
 ## Lessons Learned
 
-- Created new Active Directory user accounts using ADUC.
-- Assigned users to security groups for access management.
-- Verified group membership through both GUI and PowerShell.
-- Reinforced the importance of validating account configuration after onboarding.
+- Created new Active Directory user accounts using Active Directory Users and Computers.
+- Assigned users to security groups based on departmental access requirements.
+- Verified group membership using both graphical tools and PowerShell.
+- Reinforced the importance of validating user account configuration before closing a Help Desk ticket.
+- Demonstrated a standard enterprise user onboarding workflow.
+
+---
+
+## Screenshots
+
+- 01-New-User-Wizard.png
+- 02-User-Created.png
+- 03-User-Group-Membership.png
+- 04-Sales-Group-Members.png
+- 05-PowerShell-Verification.png

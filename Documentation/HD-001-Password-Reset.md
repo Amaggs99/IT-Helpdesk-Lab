@@ -1,186 +1,141 @@
-\# Ticket HD-001 - Password Reset
+# HD-001 — Password Reset
 
+## Objective
 
+Simulate a common Help Desk request by resetting a user's forgotten Active Directory password and requiring a password change at the next logon.
 
-\## Ticket Information
+---
 
+# Ticket Information
 
+**Ticket ID:** HD-001
 
-\*\*Ticket ID:\*\* HD-001
+**Priority:** Medium
 
+**Category:** User Account Administration
 
+**Status:** Completed
 
-\*\*Priority:\*\* Medium
+---
 
+## Scenario
 
+User **John Smith (jsmith)** contacted the Help Desk after forgetting their Active Directory password and was unable to sign in to the domain.
 
-\*\*Category:\*\* User Account Management
+---
 
+## Environment
 
+| Item | Value |
+|------|-------|
+| Domain | adlab.local |
+| Domain Controller | DC01 |
+| Client | CLIENT01 |
+| User | John Smith (jsmith) |
 
-\*\*Status:\*\* Resolved
+---
 
+# Investigation
 
+Verified the user account existed in Active Directory.
 
-\---
+Confirmed the account was enabled and not locked.
 
+Verified the user's identity before performing the password reset.
 
+---
 
-\## Scenario
+# Resolution
 
+Opened **Active Directory Users and Computers (ADUC)**.
 
-
-User \*\*John Smith (jsmith)\*\* contacted the Help Desk because they forgot their password and could no longer sign in to the domain.
-
-
-
-\---
-
-
-
-\## Symptoms
-
-
-
-\- User unable to authenticate.
-
-\- Password forgotten.
-
-\- Account not locked.
-
-
-
-\---
-
-
-
-\## Resolution (Active Directory GUI)
-
-
-
-1\. Open \*\*Active Directory Users and Computers\*\*.
-
-2\. Navigate to:
-
-
+Navigated to:
 
 ```text
-
 Company
-
 └── Users
-
 ```
 
+Right-clicked **John Smith** and selected **Reset Password**.
 
+Assigned a temporary password.
 
-3\. Right-click \*\*John Smith\*\*.
+Enabled:
 
-4\. Select \*\*Reset Password\*\*.
+- User must change password at next logon
 
-5\. Assign a temporary password.
+Applied the changes.
 
-6\. Enable \*\*User must change password at next logon\*\*.
-
-7\. Apply the changes.
-
-
-
-\---
-
-
-
-\## Resolution (PowerShell)
-
-
+Performed the same task using PowerShell:
 
 ```powershell
-
 Set-ADAccountPassword `
+-Identity jsmith `
+-NewPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force)
 
-\-Identity jsmith `
+Set-ADUser jsmith -ChangePasswordAtLogon $true
+```
 
-\-NewPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force)
+Verified the account properties:
 
+```powershell
+Get-ADUser jsmith -Properties PasswordLastSet,PasswordNeverExpires,Enabled |
+Format-List Name,Enabled,PasswordLastSet,PasswordNeverExpires
+```
 
+---
+
+# Validation
+
+Completed the following validation tests:
+
+- ✅ Password successfully reset
+- ✅ User account remained enabled
+- ✅ Temporary password accepted
+- ✅ User prompted to change password at next logon
+- ✅ User successfully authenticated
+
+---
+
+## PowerShell / Commands Used
+
+```powershell
+Set-ADAccountPassword `
+-Identity jsmith `
+-NewPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force)
 
 Set-ADUser jsmith -ChangePasswordAtLogon $true
 
-
-
 Get-ADUser jsmith -Properties PasswordLastSet,PasswordNeverExpires,Enabled |
-
 Format-List Name,Enabled,PasswordLastSet,PasswordNeverExpires
-
 ```
 
+---
 
+# Result
 
-\---
+✔ Password successfully reset
 
+✔ User required to change password at next sign-in
 
+✔ User successfully authenticated
 
-\## Validation
+✔ Ticket resolved successfully
 
+---
 
+# Lessons Learned
 
-\- Password reset successfully.
+- Reset Active Directory user passwords using both ADUC and PowerShell.
+- Enforced password changes at the next logon.
+- Verified user account status before and after the password reset.
+- Reinforced standard Help Desk identity verification procedures before modifying user credentials.
 
-\- User authenticated successfully.
+---
 
-\- Windows prompted the user to change the password at first sign in.
+## Screenshots
 
-\- Account verified as enabled.
-
-
-
-\---
-
-
-
-\## Skills Demonstrated
-
-
-
-\- Active Directory Administration
-
-\- Password Management
-
-\- User Authentication
-
-\- Windows Server Administration
-
-\- PowerShell Administration
-
-\- Help Desk Troubleshooting
-
-
-
-\---
-
-
-
-\## Screenshots
-
-
-
-\- Password-Reset-01.png
-
-\- Password-Reset-02.png
-
-\- Password-Reset-03.png
-
-\- Password-Reset-04-PowerShell.png
-
-
-
-\---
-
-
-
-\## Outcome
-
-
-
-The user successfully logged into the domain after changing their temporary password. The ticket was resolved without additional escalation.
-
+- 01-Reset-Password.png
+- 02-Temporary-Password.png
+- 03-Force-Password-Change.png
+- 04-PowerShell-Verification.png
