@@ -52,6 +52,14 @@ The objective is to demonstrate practical Help Desk and Windows Server administr
 
 ---
 
+# Lab Architecture
+
+![Active Directory Lab Architecture](Network-Diagram.png)
+
+This diagram illustrates the virtual lab environment used throughout this repository. DC01 functions as the Domain Controller, DNS Server, and file server, while CLIENT01 is a domain-joined Windows 11 workstation used to simulate end-user support scenarios. VMware Workstation Pro provides virtualization using a Host-Only network for Active Directory communication and a NAT adapter for Internet access.
+
+---
+
 # Technologies Used
 
 - Windows Server 2022
