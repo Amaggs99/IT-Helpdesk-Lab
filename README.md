@@ -2,15 +2,11 @@
 
 
 
-!\[Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-
-!\[Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
-
-!\[Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
-
-!\[PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
-
-!\[GitHub last commit](https://img.shields.io/github/last-commit/Amaggs99/IT-Helpdesk-Lab)
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
+![Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
+![PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
+![GitHub last commit](https://img.shields.io/github/last-commit/Amaggs99/IT-Helpdesk-Lab)
 
 
 
