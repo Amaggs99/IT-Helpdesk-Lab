@@ -1,6 +1,6 @@
 # Commands Used
 
-This document contains PowerShell, Windows, Active Directory, and Git commands used throughout the IT Helpdesk Lab project.
+This document contains PowerShell, Windows, Active Directory, networking, file sharing, and Git commands used throughout the IT Helpdesk Lab project.
 
 ---
 
@@ -125,7 +125,7 @@ Launches Active Directory Users and Computers.
 ## View User Group Membership
 
 ```powershell
-Get-ADPrincipalGroupMembership ecarter |
+Get-ADPrincipalGroupMembership mwilson |
 Format-Table Name, GroupScope
 ```
 
@@ -136,7 +136,7 @@ Displays all Active Directory security groups assigned to the user.
 ## Verify Group Membership Attribute
 
 ```powershell
-Get-ADUser ecarter -Properties MemberOf |
+Get-ADUser mwilson -Properties MemberOf |
 Select-Object Name,@{Name="Groups";Expression={$_.MemberOf}}
 ```
 
@@ -168,6 +168,152 @@ User Properties
 ```
 
 Verifies the user belongs to the correct Active Directory security groups.
+
+---
+
+# HD-004 — User Offboarding
+
+## Remove User from Security Group
+
+Graphical Tool:
+
+```text
+User Properties
+└── Member Of
+    └── Remove
+```
+
+Removes unnecessary security group memberships during the offboarding process.
+
+---
+
+## Disable User Account
+
+Graphical Tool:
+
+```text
+Right-click User
+└── Disable Account
+```
+
+Disables the Active Directory user account.
+
+---
+
+## Move User to Disabled Users OU
+
+Graphical Tool:
+
+```text
+Right-click User
+└── Move...
+```
+
+Moves the account to the Disabled Users Organizational Unit.
+
+---
+
+## Verify Account Status
+
+```powershell
+Get-ADUser ecarter -Properties Enabled |
+Select-Object Name, Enabled
+```
+
+Verifies whether the Active Directory account is enabled or disabled.
+
+---
+
+## Verify Organizational Unit
+
+```powershell
+Get-ADUser ecarter |
+Select DistinguishedName
+```
+
+Displays the distinguished name of the user account, including its Organizational Unit.
+
+---
+
+# HD-005 — Shared Folder Permissions
+
+## Display Network Configuration
+
+```cmd
+ipconfig /all
+```
+
+Displays complete network adapter configuration.
+
+---
+
+## Flush DNS Cache
+
+```cmd
+ipconfig /flushdns
+```
+
+Clears the local DNS resolver cache.
+
+---
+
+## Register DNS Records
+
+```cmd
+ipconfig /registerdns
+```
+
+Forces the client or server to register its DNS records.
+
+---
+
+## Test Domain Controller Connectivity
+
+```cmd
+ping dc01
+```
+
+Verifies hostname resolution and connectivity to the domain controller.
+
+---
+
+## Test Domain Connectivity
+
+```cmd
+ping adlab.local
+```
+
+Verifies DNS resolution using the Active Directory domain name.
+
+---
+
+## Test DNS Resolution
+
+```cmd
+nslookup dc01
+```
+
+Resolves the domain controller hostname through DNS.
+
+---
+
+## Test DNS Resolution (FQDN)
+
+```cmd
+nslookup adlab.local
+```
+
+Verifies DNS resolution for the Active Directory domain.
+
+---
+
+## Access Shared Folder
+
+```text
+\\dc01\Sales
+```
+
+Opens the Sales network share from a domain-joined client workstation.
 
 ---
 
@@ -227,6 +373,16 @@ Clears the local DNS cache.
 
 ---
 
+## Register DNS Records
+
+```cmd
+ipconfig /registerdns
+```
+
+Registers the computer's DNS records with the configured DNS server.
+
+---
+
 ## Test Connectivity
 
 ```cmd
@@ -241,11 +397,27 @@ Tests communication with the domain controller.
 ping 192.168.66.10
 ```
 
-Tests network connectivity using the IP address.
+Tests network connectivity using the server's IP address.
+
+---
+
+```cmd
+ping adlab.local
+```
+
+Tests connectivity using the Active Directory domain name.
 
 ---
 
 ## Test DNS Resolution
+
+```cmd
+nslookup dc01
+```
+
+Verifies DNS name resolution for the domain controller.
+
+---
 
 ```cmd
 nslookup adlab.local
@@ -387,81 +559,20 @@ Renames a file.
 
 ---
 
-# HD-004 — User Offboarding
-
-## Remove User from Security Group
-
-Graphical Tool:
-
-```text
-User Properties
-└── Member Of
-    └── Remove
-```
-
-Removes unnecessary security group memberships during the offboarding process.
-
----
-
-## Disable User Account
-
-Graphical Tool:
-
-```text
-Right-click User
-└── Disable Account
-```
-
-Disables the Active Directory user account.
-
----
-
-## Move User to Disabled Users OU
-
-Graphical Tool:
-
-```text
-Right-click User
-└── Move...
-```
-
-Moves the account to the Disabled Users Organizational Unit.
-
----
-
-## Verify Account Status
-
-```powershell
-Get-ADUser ecarter -Properties Enabled |
-Select-Object Name, Enabled
-```
-
-Verifies whether the Active Directory account is enabled or disabled.
-
----
-
-## Verify Organizational Unit
-
-```powershell
-Get-ADUser ecarter |
-Select DistinguishedName
-```
-
-Displays the distinguished name of the user account, including its Organizational Unit.
-
----
-
 # Skills Demonstrated
 
 The commands in this document demonstrate experience with:
 
 - Windows Server Administration
 - Active Directory Users and Computers (ADUC)
-- PowerShell Administration
 - Active Directory User Lifecycle Management
 - Active Directory Account Management
 - Security Group Administration
 - Organizational Unit (OU) Management
+- Shared Folder Administration
+- NTFS Permissions
+- SMB Share Permissions
+- PowerShell Administration
 - Group Policy Management
 - DNS Troubleshooting
 - Windows Networking

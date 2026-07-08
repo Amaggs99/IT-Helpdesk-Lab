@@ -1,6 +1,6 @@
 # Help Desk Ticket Tracker
 
-This document provides a summary of all completed Help Desk scenarios performed within the Active Directory home lab. Each ticket simulates a realistic IT support request and demonstrates both GUI- and PowerShell-based administration.
+This document provides a summary of all completed Help Desk scenarios performed within the IT Helpdesk Lab. Each ticket simulates a realistic Help Desk request commonly encountered in an enterprise Active Directory environment.
 
 ---
 
@@ -12,6 +12,7 @@ This document provides a summary of all completed Help Desk scenarios performed 
 | HD-002 | Account Lockout Investigation | Account Administration | ✅ Completed |
 | HD-003 | User Onboarding | User Administration | ✅ Completed |
 | HD-004 | User Offboarding | User Administration | ✅ Completed |
+| HD-005 | Shared Folder Permissions | File Services | ✅ Completed |
 
 ---
 
@@ -19,11 +20,11 @@ This document provides a summary of all completed Help Desk scenarios performed 
 
 ## Summary
 
-Simulated a Help Desk request where a user forgot their Active Directory password and was unable to sign in.
+Simulated a Help Desk request where a user forgot their Active Directory password and required a password reset.
 
 ### Technologies Used
 
-- Active Directory Users and Computers
+- Active Directory Users and Computers (ADUC)
 - Windows Server 2022
 - PowerShell
 
@@ -33,12 +34,12 @@ Simulated a Help Desk request where a user forgot their Active Directory passwor
 
 ## Summary
 
-Simulated a user account lockout caused by multiple failed authentication attempts.
+Simulated an Active Directory account lockout caused by multiple failed logon attempts. Investigated the issue, verified the account lockout policy, and restored user access.
 
 ### Technologies Used
 
+- Active Directory Users and Computers (ADUC)
 - Group Policy Management
-- Active Directory Users and Computers
 - Windows Server 2022
 - PowerShell
 
@@ -48,20 +49,51 @@ Simulated a user account lockout caused by multiple failed authentication attemp
 
 ## Summary
 
-Simulated a new employee onboarding request by creating an Active Directory user account and assigning the appropriate security group.
+Simulated onboarding a new employee by creating a domain user account, assigning organizational unit placement, configuring account settings, and adding the user to the appropriate security group.
 
 ### Technologies Used
 
-- Active Directory Users and Computers
+- Active Directory Users and Computers (ADUC)
 - Windows Server 2022
+- PowerShell
+
+---
+
+# HD-004 — User Offboarding
+
+## Summary
+
+Simulated employee termination by removing unnecessary group memberships, disabling the Active Directory account, and moving the account into a Disabled Users organizational unit.
+
+### Technologies Used
+
+- Active Directory Users and Computers (ADUC)
+- Windows Server 2022
+- PowerShell
+
+---
+
+# HD-005 — Shared Folder Permissions
+
+## Summary
+
+Simulated a departmental file share request by creating a shared folder, assigning NTFS and Share permissions to an Active Directory security group, and validating user access from a domain-joined Windows client.
+
+### Technologies Used
+
+- Windows Server 2022
+- Active Directory Users and Computers (ADUC)
+- File and Storage Services
+- NTFS Permissions
+- SMB Share Permissions
+- DNS
+- Windows Networking
 - PowerShell
 
 ---
 
 # Planned Scenarios
 
-- ⏳ HD-004 — User Offboarding
-- ⏳ HD-005 — Shared Folder Permissions
 - ⏳ HD-006 — NTFS Permissions
 - ⏳ HD-007 — Network Drive Mapping
 - ⏳ HD-008 — Printer Deployment
@@ -70,16 +102,23 @@ Simulated a new employee onboarding request by creating an Active Directory user
 
 ---
 
-## Skills Demonstrated
+# Skills Demonstrated
 
-- Active Directory Administration
-- User Account Management
+- Windows Server Administration
+- Active Directory User Management
 - Password Management
 - Account Lockout Investigation
 - User Onboarding
+- User Offboarding
 - Security Group Administration
-- Group Policy
+- Shared Folder Administration
+- NTFS Permissions
+- SMB Share Permissions
+- DNS Administration
+- Windows Networking
+- Group Policy Management
 - PowerShell Administration
-- Windows Server 2022
 - Help Desk Troubleshooting
 - Technical Documentation
+- Git Version Control
+- GitHub Portfolio Development
