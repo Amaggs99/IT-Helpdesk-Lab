@@ -13,6 +13,7 @@ This document provides a summary of all completed Help Desk scenarios performed 
 | HD-003 | User Onboarding | User Administration | ✅ Completed |
 | HD-004 | User Offboarding | User Administration | ✅ Completed |
 | HD-005 | Shared Folder Permissions | File Services | ✅ Completed |
+| HD-006 | NTFS Permissions | File Services | ✅ Completed |
 
 ---
 
@@ -92,9 +93,24 @@ Simulated a departmental file share request by creating a shared folder, assigni
 
 ---
 
+# HD-006 — NTFS Permissions
+
+## Summary
+
+Simulated a Help Desk request requiring a confidential Human Resources shared folder. Configured NTFS permissions, SMB share permissions, validated access for authorized users, denied unauthorized users, and verified configuration using PowerShell.
+
+### Technologies Used
+
+- Windows Server 2022
+- Active Directory
+- NTFS Permissions
+- SMB File Shares
+- PowerShell
+
+---
+
 # Planned Scenarios
 
-- ⏳ HD-006 — NTFS Permissions
 - ⏳ HD-007 — Network Drive Mapping
 - ⏳ HD-008 — Printer Deployment
 - ⏳ HD-009 — DNS Troubleshooting

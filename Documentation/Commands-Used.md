@@ -81,6 +81,8 @@ Verifies whether any Active Directory accounts remain locked.
 
 ---
 
+# Group Policy Commands
+
 ## Refresh Group Policy
 
 ```cmd
@@ -125,7 +127,7 @@ Launches Active Directory Users and Computers.
 ## View User Group Membership
 
 ```powershell
-Get-ADPrincipalGroupMembership mwilson |
+Get-ADPrincipalGroupMembership ecarter |
 Format-Table Name, GroupScope
 ```
 
@@ -136,7 +138,7 @@ Displays all Active Directory security groups assigned to the user.
 ## Verify Group Membership Attribute
 
 ```powershell
-Get-ADUser mwilson -Properties MemberOf |
+Get-ADUser ecarter -Properties MemberOf |
 Select-Object Name,@{Name="Groups";Expression={$_.MemberOf}}
 ```
 
@@ -317,6 +319,38 @@ Opens the Sales network share from a domain-joined client workstation.
 
 ---
 
+# HD-006 — NTFS Permissions
+
+## View NTFS Permissions
+
+```powershell
+Get-Acl "C:\CompanyShares\HR" | Format-List
+```
+
+Displays the NTFS Access Control List (ACL) for the HR folder.
+
+---
+
+## View SMB Share Permissions
+
+```powershell
+Get-SmbShareAccess -Name HR
+```
+
+Displays all configured share permissions for the HR network share.
+
+---
+
+## Access Shared Folder
+
+```text
+\\dc01\HR
+```
+
+Tests network access to the HR shared folder from a domain-joined client.
+
+---
+
 # Active Directory Administration
 
 ## Open Active Directory Users and Computers
@@ -391,15 +425,11 @@ ping dc01
 
 Tests communication with the domain controller.
 
----
-
 ```cmd
 ping 192.168.66.10
 ```
 
 Tests network connectivity using the server's IP address.
-
----
 
 ```cmd
 ping adlab.local
@@ -416,8 +446,6 @@ nslookup dc01
 ```
 
 Verifies DNS name resolution for the domain controller.
-
----
 
 ```cmd
 nslookup adlab.local
@@ -570,11 +598,13 @@ The commands in this document demonstrate experience with:
 - Security Group Administration
 - Organizational Unit (OU) Management
 - Shared Folder Administration
-- NTFS Permissions
-- SMB Share Permissions
+- NTFS Permission Administration
+- SMB Share Administration
 - PowerShell Administration
 - Group Policy Management
 - DNS Troubleshooting
 - Windows Networking
+- Windows Authentication
+- File Server Administration
 - Git Version Control
 - GitHub Portfolio Documentation

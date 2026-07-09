@@ -1,7 +1,7 @@
 # IT Helpdesk Lab
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Progress](https://img.shields.io/badge/Progress-5%2F10%20Completed-brightgreen)
+![Progress](https://img.shields.io/badge/Progress-6%2F10%20Completed-brightgreen)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
@@ -99,7 +99,7 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 # Progress
 
-**Project Completion:** **5 / 10 Help Desk Scenarios Completed**
+**Project Completion:** **6 / 10 Help Desk Scenarios Completed**
 
 Current technologies demonstrated:
 
@@ -125,12 +125,12 @@ Current technologies demonstrated:
 - ✅ HD-003 — User Onboarding
 - ✅ HD-004 — User Offboarding
 - ✅ HD-005 — Shared Folder Permissions
+- ✅ HD-006 — NTFS Permissions
 
 ---
 
 # Upcoming Labs
 
-- ⬜ HD-006 — NTFS Permissions
 - ⬜ HD-007 — Network Drive Mapping
 - ⬜ HD-008 — Printer Deployment
 - ⬜ HD-009 — DNS Troubleshooting
