@@ -14,6 +14,7 @@ This document provides a summary of all completed Help Desk scenarios performed 
 | HD-004 | User Offboarding | User Administration | ✅ Completed |
 | HD-005 | Shared Folder Permissions | File Services | ✅ Completed |
 | HD-006 | NTFS Permissions | File Services | ✅ Completed |
+| HD-007 | Network Drive Mapping | File Services | ✅ Completed |
 
 ---
 
@@ -111,7 +112,6 @@ Simulated a Help Desk request requiring a confidential Human Resources shared fo
 
 # Planned Scenarios
 
-- ⏳ HD-007 — Network Drive Mapping
 - ⏳ HD-008 — Printer Deployment
 - ⏳ HD-009 — DNS Troubleshooting
 - ⏳ HD-010 — DHCP Troubleshooting

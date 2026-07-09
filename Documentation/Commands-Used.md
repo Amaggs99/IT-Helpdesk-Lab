@@ -351,6 +351,53 @@ Tests network access to the HR shared folder from a domain-joined client.
 
 ---
 
+# HD-007 — Network Drive Mapping
+
+## Map Network Drive (GUI)
+
+Graphical Tool:
+
+```text
+This PC
+└── Map network drive
+    ├── Drive: S:
+    └── Folder: \\dc01\Sales
+```
+
+Maps the Sales shared folder to a persistent drive letter.
+
+---
+
+## Access Network Share
+
+```text
+\\dc01\Sales
+```
+
+Opens the Sales shared folder before mapping it as a network drive.
+
+---
+
+## View Mapped Drives
+
+```powershell
+Get-PSDrive
+```
+
+Displays all PowerShell drives, including mapped network drives.
+
+---
+
+## View Network Connections
+
+```cmd
+net use
+```
+
+Displays all active mapped network drives and network connections.
+
+---
+
 # Active Directory Administration
 
 ## Open Active Directory Users and Computers
@@ -600,6 +647,8 @@ The commands in this document demonstrate experience with:
 - Shared Folder Administration
 - NTFS Permission Administration
 - SMB Share Administration
+- Network Drive Mapping
+- SMB Network Shares
 - PowerShell Administration
 - Group Policy Management
 - DNS Troubleshooting
