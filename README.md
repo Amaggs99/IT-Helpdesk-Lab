@@ -110,20 +110,20 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 Current technologies demonstrated:
 
-✅ Windows Server 2022
-✅ Active Directory Users and Computers (ADUC)
-✅ Active Directory User Management
-✅ Group Policy
-✅ PowerShell Administration
-✅ Password Reset Procedures
-✅ Account Lockout Policy
-✅ Security Groups
-✅ SMB File Sharing
-✅ Shared Folder Administration
-✅ NTFS Permissions
-✅ Network Drive Mapping
-✅ Printer Deployment
-✅ Documentation & Screenshot Evidence
+- ✅ Windows Server 2022
+- ✅ Active Directory Users and Computers (ADUC)
+- ✅ Active Directory User Management
+- ✅ Group Policy
+- ✅ PowerShell Administration
+- ✅ Password Reset Procedures
+- ✅ Account Lockout Policy
+- ✅ Security Groups
+- ✅ SMB File Sharing
+- ✅ Shared Folder Administration
+- ✅ NTFS Permissions
+- ✅ Network Drive Mapping
+- ✅ Printer Deployment
+- ✅ Documentation & Screenshot Evidence
 ---
 
 # Completed Labs
