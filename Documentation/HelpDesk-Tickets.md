@@ -15,6 +15,7 @@ This document provides a summary of all completed Help Desk scenarios performed 
 | HD-005 | Shared Folder Permissions | File Services | ✅ Completed |
 | HD-006 | NTFS Permissions | File Services | ✅ Completed |
 | HD-007 | Network Drive Mapping | File Services | ✅ Completed |
+| HD-008 | Printer Deployment | Printer Administration | ✅ Completed |
 
 ---
 
@@ -110,9 +111,42 @@ Simulated a Help Desk request requiring a confidential Human Resources shared fo
 
 ---
 
+# HD-007 — Network Drive Mapping
+
+## Summary
+
+Simulated a Help Desk request where a user required a persistent mapped network drive to access a departmental shared folder.
+
+### Technologies Used
+
+- Windows Server 2022
+- Windows 11
+- SMB File Sharing
+- Windows File Explorer
+- PowerShell
+
+---
+
+# HD-008 — Printer Deployment
+
+## Summary
+
+Simulated a Help Desk request to deploy a shared network printer from a Windows Server to a domain-joined Windows client. Installed a Generic / Text Only printer, enabled printer sharing, connected the client to the shared printer, and verified the deployment using PowerShell.
+
+### Technologies Used
+
+- Windows Server 2022
+- Windows 11
+- Print Management
+- Printer Sharing
+- Devices and Printers
+- SMB Networking
+- PowerShell
+
+---
+
 # Planned Scenarios
 
-- ⏳ HD-008 — Printer Deployment
 - ⏳ HD-009 — DNS Troubleshooting
 - ⏳ HD-010 — DHCP Troubleshooting
 
@@ -130,6 +164,8 @@ Simulated a Help Desk request requiring a confidential Human Resources shared fo
 - Shared Folder Administration
 - NTFS Permissions
 - SMB Share Permissions
+- Network Drive Mapping
+- Printer Administration
 - DNS Administration
 - Windows Networking
 - Group Policy Management

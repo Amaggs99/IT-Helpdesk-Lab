@@ -368,6 +368,29 @@ Maps the Sales shared folder to a persistent drive letter.
 
 ---
 
+# HD-008 — Printer Deployment
+
+## Display Installed Printers
+
+```powershell
+Get-Printer
+```
+
+Displays all installed printers.
+
+---
+
+## Verify Shared Printer
+
+```powershell
+Get-Printer |
+Format-Table Name, DriverName, Shared
+```
+
+Displays printer name, driver, and sharing status.
+
+---
+
 ## Access Network Share
 
 ```text

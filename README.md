@@ -1,7 +1,7 @@
 # IT Helpdesk Lab
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Progress](https://img.shields.io/badge/Progress-7%2F10%20Completed-brightgreen)
+![Progress](https://img.shields.io/badge/Progress-8%2F10%20Completed-brightgreen)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
@@ -24,6 +24,12 @@ Each ticket simulates a real-world Help Desk request and includes:
 - Documentation
 
 The objective is to demonstrate practical Help Desk and Windows Server administration skills commonly used in enterprise environments.
+
+---
+
+## Lab Preview
+
+![Lab Screenshot](Screenshots/Overview/Lab-Overview.png)
 
 ---
 
@@ -100,23 +106,24 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 # Progress
 
-**Project Completion:** **7 / 10 Help Desk Scenarios Completed**
+**Project Completion:** **8 / 10 Help Desk Scenarios Completed**
 
 Current technologies demonstrated:
 
-- ✅ Windows Server 2022
-- ✅ Active Directory Users and Computers (ADUC)
-- ✅ Active Directory User Management
-- ✅ Group Policy
-- ✅ PowerShell Administration
-- ✅ Password Reset Procedures
-- ✅ Account Lockout Policy
-- ✅ Security Groups
-- ✅ Shared Folder Administration
-- ✅ NTFS Permissions
-- ✅ DNS Troubleshooting
-- ✅ Documentation & Screenshot Evidence
-
+✅ Windows Server 2022
+✅ Active Directory Users and Computers (ADUC)
+✅ Active Directory User Management
+✅ Group Policy
+✅ PowerShell Administration
+✅ Password Reset Procedures
+✅ Account Lockout Policy
+✅ Security Groups
+✅ SMB File Sharing
+✅ Shared Folder Administration
+✅ NTFS Permissions
+✅ Network Drive Mapping
+✅ Printer Deployment
+✅ Documentation & Screenshot Evidence
 ---
 
 # Completed Labs
@@ -128,12 +135,12 @@ Current technologies demonstrated:
 - ✅ HD-005 — Shared Folder Permissions
 - ✅ HD-006 — NTFS Permissions
 - ✅ HD-007 — Network Drive Mapping
+- ✅ HD-008 — Printer Deployment
 
 ---
 
 # Upcoming Labs
 
-- ⬜ HD-008 — Printer Deployment
 - ⬜ HD-009 — DNS Troubleshooting
 - ⬜ HD-010 — DHCP Troubleshooting
 
