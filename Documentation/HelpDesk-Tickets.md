@@ -16,6 +16,7 @@ This document provides a summary of all completed Help Desk scenarios performed 
 | HD-006 | NTFS Permissions | File Services | ✅ Completed |
 | HD-007 | Network Drive Mapping | File Services | ✅ Completed |
 | HD-008 | Printer Deployment | Printer Administration | ✅ Completed |
+| HD-009 | DNS Resolution Troubleshooting | Network Connectivity | ✅ Completed |
 
 ---
 
@@ -147,7 +148,6 @@ Simulated a Help Desk request to deploy a shared network printer from a Windows 
 
 # Planned Scenarios
 
-- ⏳ HD-009 — DNS Troubleshooting
 - ⏳ HD-010 — DHCP Troubleshooting
 
 ---

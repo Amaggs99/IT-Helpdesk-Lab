@@ -1,7 +1,6 @@
 # Commands Used
 
-This document contains PowerShell, Windows, Active Directory, networking, file sharing, and Git commands used throughout the IT Helpdesk Lab project.
-
+This document contains PowerShell, Windows, Active Directory, networking, DNS, printer management, file sharing, and Git commands used throughout the IT Helpdesk Lab project.
 ---
 
 # HD-001 — Password Reset
@@ -295,7 +294,7 @@ Verifies DNS resolution using the Active Directory domain name.
 nslookup dc01
 ```
 
-Resolves the domain controller hostname through DNS.
+Verifies DNS name resolution for the domain controller.
 
 ---
 
@@ -368,6 +367,26 @@ Maps the Sales shared folder to a persistent drive letter.
 
 ---
 
+## View Mapped Drives
+
+```powershell
+Get-PSDrive
+```
+
+Displays all PowerShell drives, including mapped network drives.
+
+---
+
+## View Network Connections
+
+```cmd
+net use
+```
+
+Displays all active mapped network drives and SMB connections.
+
+---
+
 # HD-008 — Printer Deployment
 
 ## Display Installed Printers
@@ -391,33 +410,75 @@ Displays printer name, driver, and sharing status.
 
 ---
 
-## Access Network Share
+# HD-009 — DNS Resolution Troubleshooting
 
-```text
-\\dc01\Sales
-```
-
-Opens the Sales shared folder before mapping it as a network drive.
-
----
-
-## View Mapped Drives
-
-```powershell
-Get-PSDrive
-```
-
-Displays all PowerShell drives, including mapped network drives.
-
----
-
-## View Network Connections
+## Display Network Configuration
 
 ```cmd
-net use
+ipconfig /all
 ```
 
-Displays all active mapped network drives and network connections.
+Displays the current TCP/IP configuration, including the IP address, subnet mask, default gateway, and configured DNS server.
+
+---
+
+## Flush DNS Cache
+
+```cmd
+ipconfig /flushdns
+```
+
+Clears the local DNS resolver cache.
+
+---
+
+## Register DNS Records
+
+```cmd
+ipconfig /registerdns
+```
+
+Registers the computer's DNS records with the configured DNS server.
+
+---
+
+## Test DNS Resolution
+
+```cmd
+nslookup dc01
+```
+
+Queries the configured DNS server to resolve the hostname **DC01**.
+
+---
+
+## Resolve DNS Name
+
+```powershell
+Resolve-DnsName dc01
+```
+
+Displays detailed DNS records returned by the configured DNS server.
+
+---
+
+## Test Hostname Connectivity
+
+```cmd
+ping dc01
+```
+
+Verifies hostname resolution and network connectivity to the domain controller.
+
+---
+
+## Test IP Connectivity
+
+```cmd
+ping 192.168.66.10
+```
+
+Verifies basic network connectivity independently of DNS.
 
 ---
 
@@ -522,6 +583,16 @@ nslookup adlab.local
 ```
 
 Verifies Active Directory DNS functionality.
+
+---
+
+## Resolve DNS Name
+
+```powershell
+Resolve-DnsName dc01
+```
+
+Displays detailed DNS records returned by the configured DNS server.
 
 ---
 
@@ -671,10 +742,12 @@ The commands in this document demonstrate experience with:
 - NTFS Permission Administration
 - SMB Share Administration
 - Network Drive Mapping
+- Printer Administration
 - SMB Network Shares
 - PowerShell Administration
 - Group Policy Management
 - DNS Troubleshooting
+- DNS Administration
 - Windows Networking
 - Windows Authentication
 - File Server Administration

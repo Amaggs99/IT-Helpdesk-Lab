@@ -1,7 +1,7 @@
 # IT Helpdesk Lab
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Progress](https://img.shields.io/badge/Progress-8%2F10%20Completed-brightgreen)
+![Progress](https://img.shields.io/badge/Progress-9%2F10%20Completed-brightgreen)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
@@ -93,6 +93,7 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 - Shared Folder Administration
 - NTFS Permissions Management
 - Network Drive Mapping
+- Printer Administration
 - SMB Share Permissions
 - Group Policy Administration
 - DNS Administration
@@ -106,7 +107,7 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 # Progress
 
-**Project Completion:** **8 / 10 Help Desk Scenarios Completed**
+**Project Completion:** **9 / 10 Help Desk Scenarios Completed**
 
 Current technologies demonstrated:
 
@@ -124,6 +125,7 @@ Current technologies demonstrated:
 - ✅ Network Drive Mapping
 - ✅ Printer Deployment
 - ✅ Documentation & Screenshot Evidence
+- ✅ DNS Troubleshooting
 ---
 
 # Completed Labs
@@ -136,12 +138,12 @@ Current technologies demonstrated:
 - ✅ HD-006 — NTFS Permissions
 - ✅ HD-007 — Network Drive Mapping
 - ✅ HD-008 — Printer Deployment
+- ✅ HD-009 — DNS Resolution Troubleshooting
 
 ---
 
 # Upcoming Labs
 
-- ⬜ HD-009 — DNS Troubleshooting
 - ⬜ HD-010 — DHCP Troubleshooting
 
 ---
