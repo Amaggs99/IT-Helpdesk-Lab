@@ -2,21 +2,25 @@
 
 This document provides a summary of all completed Help Desk scenarios performed within the IT Helpdesk Lab. Each ticket simulates a realistic Help Desk request commonly encountered in an enterprise Active Directory environment.
 
+**Project Status:** Completed  
+**Tickets Completed:** 10 / 10
+
 ---
 
 # Completed Tickets
 
 | Ticket ID | Scenario | Category | Status |
 |-----------|----------|----------|--------|
-| HD-001 | Password Reset | User Account Administration | ✅ Completed |
-| HD-002 | Account Lockout Investigation | Account Administration | ✅ Completed |
-| HD-003 | User Onboarding | User Administration | ✅ Completed |
-| HD-004 | User Offboarding | User Administration | ✅ Completed |
-| HD-005 | Shared Folder Permissions | File Services | ✅ Completed |
-| HD-006 | NTFS Permissions | File Services | ✅ Completed |
-| HD-007 | Network Drive Mapping | File Services | ✅ Completed |
-| HD-008 | Printer Deployment | Printer Administration | ✅ Completed |
-| HD-009 | DNS Resolution Troubleshooting | Network Connectivity | ✅ Completed |
+| [HD-001](HD-001-Password-Reset.md) | Password Reset | User Account Administration | ✅ Completed |
+| [HD-002](HD-002-Account-Lockout.md) | Account Administration | Account Administration | ✅ Completed |
+| [HD-003](HD-003-User-Onboarding.md) | User Onboarding | User Administration | ✅ Completed |
+| [HD-004](HD-004-User-Offboarding.md) | User Offboarding | User Administration | ✅ Completed |
+| [HD-005](HD-005-Shared-Folder-Permissions.md) | Shared Folder Permissions | File Services | ✅ Completed |
+| [HD-006](HD-006-NTFS-Permissions.md) | NTFS Permissions | File Services | ✅ Completed |
+| [HD-007](HD-007-Network-Drive-Mapping.md) | Network Drive Mapping | File Services | ✅ Completed |
+| [HD-008](HD-008-Printer-Deployment.md) | Printer Deployment | Printer Administration | ✅ Completed |
+| [HD-009](HD-009-DNS-Troubleshooting.md) | DNS Resolution Troubleshooting | Network Connectivity | ✅ Completed |
+| [HD-010](HD-010-DHCP-Troubleshooting.md) | DHCP Server Installation, Configuration, and Troubleshooting | Network Services | ✅ Completed |
 
 ---
 
@@ -146,9 +150,42 @@ Simulated a Help Desk request to deploy a shared network printer from a Windows 
 
 ---
 
-# Planned Scenarios
+# HD-009 — DNS Resolution Troubleshooting
 
-- ⏳ HD-010 — DHCP Troubleshooting
+## Summary
+
+Simulated a Help Desk incident where a domain-joined Windows client was unable to resolve internal hostnames. Investigated the client DNS configuration, identified an incorrect DNS server setting, corrected the configuration, cleared the DNS cache, and verified successful name resolution and connectivity to the domain controller.
+
+### Technologies Used
+
+- Windows Server 2022
+- Windows 11
+- Active Directory Domain Services
+- DNS Server
+- Windows Networking
+- Command Prompt
+- PowerShell
+
+---
+
+# HD-010 — DHCP Server Installation, Configuration, and Troubleshooting
+
+## Summary
+
+Simulated a Help Desk incident where a Windows client was unable to obtain a valid IP address because the DHCP Server service was unavailable. Installed and authorized the DHCP Server role, created and activated an IPv4 scope, verified lease assignment, simulated a DHCP service outage, restored the service, and confirmed successful client recovery.
+
+### Technologies Used
+
+- Windows Server 2022
+- Windows 11
+- Active Directory Domain Services
+- DHCP Server
+- DHCP Scope Management
+- DNS
+- VMware Workstation Pro
+- Windows Networking
+- Command Prompt
+- PowerShell
 
 ---
 
@@ -167,6 +204,12 @@ Simulated a Help Desk request to deploy a shared network printer from a Windows 
 - Network Drive Mapping
 - Printer Administration
 - DNS Administration
+- DNS Resolution Troubleshooting
+- DHCP Server Administration
+- DHCP Authorization
+- DHCP Scope Configuration
+- DHCP Lease Management
+- DHCP Service Troubleshooting
 - Windows Networking
 - Group Policy Management
 - PowerShell Administration

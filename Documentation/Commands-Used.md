@@ -596,6 +596,148 @@ Displays detailed DNS records returned by the configured DNS server.
 
 ---
 
+# HD-010 — DHCP Server Installation, Configuration, and Troubleshooting
+
+## Display Current IP Configuration
+
+```cmd
+ipconfig /all
+```
+
+Displays the complete network configuration, including the IPv4 address, subnet mask, DNS server, DHCP server, lease obtained time, and lease expiration time.
+
+---
+
+## Release the Current DHCP Lease
+
+```cmd
+ipconfig /release
+```
+
+Releases the client's current DHCP-assigned IPv4 address.
+
+---
+
+## Request a New DHCP Lease
+
+```cmd
+ipconfig /renew
+```
+
+Requests a new IPv4 address and network configuration from the DHCP server.
+
+---
+
+## Test DHCP Server Connectivity
+
+```cmd
+ping 192.168.66.10
+```
+
+Verifies basic network connectivity between CLIENT01 and DC01, which hosts the DHCP Server role.
+
+---
+
+## Test Domain Controller Name Resolution
+
+```cmd
+ping dc01.adlab.local
+```
+
+Verifies that the client can resolve the fully qualified domain name of the domain controller and communicate with it successfully.
+
+---
+
+## Verify DNS Resolution
+
+```cmd
+nslookup dc01.adlab.local
+```
+
+Queries the configured DNS server to confirm that `dc01.adlab.local` resolves to `192.168.66.10`.
+
+---
+
+## Open the DHCP Management Console
+
+```cmd
+dhcpmgmt.msc
+```
+
+Launches the DHCP management console used to configure scopes, review address leases, and manage DHCP server options.
+
+---
+
+## Open Windows Services
+
+```cmd
+services.msc
+```
+
+Launches the Services console used to review, stop, start, or restart the DHCP Server service.
+
+---
+
+## Check the DHCP Server Service
+
+```powershell
+Get-Service DHCPServer
+```
+
+Displays the current status of the Windows DHCP Server service.
+
+---
+
+## Start the DHCP Server Service
+
+```powershell
+Start-Service DHCPServer
+```
+
+Starts the DHCP Server service after identifying that it is stopped.
+
+---
+
+## Restart the DHCP Server Service
+
+```powershell
+Restart-Service DHCPServer
+```
+
+Restarts the DHCP Server service during troubleshooting or after configuration changes.
+
+---
+
+## Display Configured DHCP Scopes
+
+```powershell
+Get-DhcpServerv4Scope
+```
+
+Displays all configured IPv4 DHCP scopes on the server.
+
+---
+
+## Display Active DHCP Leases
+
+```powershell
+Get-DhcpServerv4Lease -ScopeId 192.168.66.0
+```
+
+Displays all active DHCP leases issued from the `192.168.66.0/24` scope.
+
+---
+
+## Display DHCP Scope Options
+
+```powershell
+Get-DhcpServerv4OptionValue -ScopeId 192.168.66.0
+```
+
+Displays configured scope options such as the DNS server and DNS domain distributed to DHCP clients.
+
+---
+
 # Git Commands
 
 ## Check Repository Status
@@ -740,16 +882,21 @@ The commands in this document demonstrate experience with:
 - Organizational Unit (OU) Management
 - Shared Folder Administration
 - NTFS Permission Administration
-- SMB Share Administration
+- SMB File Sharing
 - Network Drive Mapping
 - Printer Administration
-- SMB Network Shares
 - PowerShell Administration
 - Group Policy Management
-- DNS Troubleshooting
 - DNS Administration
+- DNS Troubleshooting
+- DHCP Server Administration
+- DHCP Server Authorization
+- DHCP Scope Configuration
+- DHCP Lease Management
+- DHCP Service Troubleshooting
 - Windows Networking
 - Windows Authentication
 - File Server Administration
+- Technical Documentation
 - Git Version Control
 - GitHub Portfolio Documentation

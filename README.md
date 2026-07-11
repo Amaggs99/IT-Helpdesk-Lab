@@ -1,15 +1,16 @@
 # IT Helpdesk Lab
 
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Progress](https://img.shields.io/badge/Progress-9%2F10%20Completed-brightgreen)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Progress](https://img.shields.io/badge/Progress-10%2F10%20Completed-brightgreen)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-blue)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-Help%20Desk-green)
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automation-blue)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Amaggs99/IT-Helpdesk-Lab)
+> A professional Windows Server 2022 Help Desk portfolio featuring ten documented enterprise support scenarios completed in an Active Directory home lab.
 
 ---
 
-# Overview
+## Overview
 
 This repository documents realistic IT Help Desk scenarios performed within a Windows Server 2022 Active Directory lab environment.
 
@@ -23,29 +24,54 @@ Each ticket simulates a real-world Help Desk request and includes:
 - Screenshots
 - Documentation
 
-The objective is to demonstrate practical Help Desk and Windows Server administration skills commonly used in enterprise environments.
+The primary goal of this repository is to demonstrate practical Help Desk troubleshooting, Windows Server administration, and PowerShell automation skills using documented, repeatable workflows that mirror real enterprise IT environments.
 
 ---
 
-## Lab Preview
+## Repository Preview
 
 ![Lab Screenshot](Screenshots/Overview/Lab-Overview.png)
 
 ---
 
-# Objectives
+## Project Objectives
 
 - Simulate realistic Help Desk support tickets
 - Perform common Active Directory administrative tasks
 - Develop Windows Server administration skills
-- Practice PowerShell administration
+- Practice PowerShell automation and administration
 - Document troubleshooting procedures
 - Build a professional GitHub portfolio
 - Develop repeatable IT support workflows
 
 ---
 
-# Lab Environment
+## Lab Architecture
+
+![Active Directory Lab Architecture](Network-Diagram.png)
+> **Enterprise Lab Topology:** DC01 provides centralized identity, DNS, DHCP, Group Policy, file sharing, and print services for a domain-joined Windows 11 client.
+
+This diagram illustrates the enterprise Active Directory environment used throughout this repository.
+
+The lab consists of a Windows Server 2022 Domain Controller (DC01) providing:
+
+- Active Directory Domain Services (AD DS)
+- DNS
+- DHCP
+- Group Policy
+- SMB File Sharing
+- Print Services
+
+CLIENT01 is a Windows 11 workstation joined to the **adlab.local** domain and is used to simulate realistic Help Desk support scenarios.
+
+The environment is hosted in VMware Workstation Pro using:
+
+- Host-Only networking for internal Active Directory communication
+- NAT networking for Internet connectivity
+
+---
+
+## Lab Environment
 
 | Component | Details |
 |-----------|---------|
@@ -54,23 +80,32 @@ The objective is to demonstrate practical Help Desk and Windows Server administr
 | Client Computer | CLIENT01 |
 | Server OS | Windows Server 2022 |
 | Client OS | Windows 11 |
+| DNS | 192.168.66.10 |
+| DHCP Scope | 192.168.66.100 - 192.168.66.200 |
 | Virtualization | VMware Workstation Pro |
 
 ---
 
-# Lab Architecture
+## Networking
 
-![Active Directory Lab Architecture](Network-Diagram.png)
-
-This diagram illustrates the virtual lab environment used throughout this repository. DC01 functions as the Domain Controller, DNS Server, and file server, while CLIENT01 is a domain-joined Windows 11 workstation used to simulate end-user support scenarios. VMware Workstation Pro provides virtualization using a Host-Only network for Active Directory communication and a NAT adapter for Internet access.
+| Setting | Value |
+|----------|-------|
+| Internal Network | 192.168.66.0/24 |
+| Domain Controller | 192.168.66.10 |
+| DHCP Scope | 192.168.66.100 - 192.168.66.200 |
+| DNS Server | 192.168.66.10 |
+| Internal Adapter | VMnet1 (Host-Only) |
+| Internet Adapter | NAT |
+| Virtualization | VMware Workstation Pro |
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 - Windows Server 2022
 - Windows 11
 - Active Directory Domain Services (AD DS)
+- DHCP Server
 - DNS
 - SMB File Sharing
 - NTFS Permissions
@@ -82,7 +117,7 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 ---
 
-# Skills Demonstrated
+## Skills Demonstrated
 
 - Active Directory Administration
 - User Account Management
@@ -97,6 +132,9 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 - SMB Share Permissions
 - Group Policy Administration
 - DNS Administration
+- DHCP Configuration
+- DHCP Scope Management
+- DHCP Lease Troubleshooting
 - PowerShell Automation
 - Help Desk Troubleshooting
 - Windows Authentication
@@ -105,9 +143,9 @@ This diagram illustrates the virtual lab environment used throughout this reposi
 
 ---
 
-# Progress
+## Progress
 
-**Project Completion:** **9 / 10 Help Desk Scenarios Completed**
+**Project Completion:** **10 / 10 Help Desk Scenarios Completed**
 
 Current technologies demonstrated:
 
@@ -126,9 +164,13 @@ Current technologies demonstrated:
 - ✅ Printer Deployment
 - ✅ Documentation & Screenshot Evidence
 - ✅ DNS Troubleshooting
+- ✅ DHCP Server Administration
+- ✅ DHCP Scope Configuration
+- ✅ DHCP Troubleshooting
+
 ---
 
-# Completed Labs
+## Completed Labs
 
 - ✅ HD-001 — Password Reset
 - ✅ HD-002 — Account Lockout Investigation
@@ -139,16 +181,11 @@ Current technologies demonstrated:
 - ✅ HD-007 — Network Drive Mapping
 - ✅ HD-008 — Printer Deployment
 - ✅ HD-009 — DNS Resolution Troubleshooting
+- ✅ HD-010 — DHCP Troubleshooting
 
 ---
 
-# Upcoming Labs
-
-- ⬜ HD-010 — DHCP Troubleshooting
-
----
-
-# Repository Structure
+## Repository Structure
 
 ```text
 IT-Helpdesk-Lab
@@ -184,7 +221,7 @@ IT-Helpdesk-Lab
 
 ---
 
-# Documentation
+## Documentation
 
 Each Help Desk ticket includes:
 
@@ -201,21 +238,21 @@ Each Help Desk ticket includes:
 
 ---
 
-# Resume Relevance
+## Target Roles
 
-This project demonstrates practical experience applicable to:
+This project demonstrates practical skills applicable to:
 
 - IT Support Technician
 - Help Desk Analyst
-- Service Desk Technician
 - Desktop Support Technician
+- Technical Support Specialist
 - Junior Systems Administrator
 - Windows Administrator
 - Junior Network Administrator
 
 ---
 
-# Future Enhancements
+## Future Enhancements
 
 Future projects may include:
 
@@ -232,8 +269,13 @@ Future projects may include:
 
 ---
 
-# Author
+## Author
 
 **Austin Maggs**
 
-GitHub: <https://github.com/Amaggs99>
+Entry-Level IT Support Specialist
+
+Sheridan College Graduate | Windows Server | Active Directory | PowerShell | Networking
+
+- GitHub: https://github.com/Amaggs99
+- LinkedIn: https://linkedin.com/in/austin-maggs
