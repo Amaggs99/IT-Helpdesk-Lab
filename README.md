@@ -223,6 +223,8 @@ IT-Helpdesk-Lab
 
 ## Documentation
 
+📋 **[View the Complete Help Desk Ticket Tracker](Documentation/HelpDesk-Tickets.md)**
+
 Each Help Desk ticket includes:
 
 - Ticket Objective

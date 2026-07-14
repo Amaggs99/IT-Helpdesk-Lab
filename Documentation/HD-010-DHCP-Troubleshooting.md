@@ -1,576 +1,191 @@
-\# HD-010 — DHCP Server Installation, Configuration, and Troubleshooting
+# HD-010 — DHCP Server Installation, Configuration, and Troubleshooting
 
+## Objective
 
+Simulate a common Help Desk incident where a Windows client is unable to obtain a valid IP address because the DHCP Server service is unavailable. Demonstrate the complete lifecycle of installing, configuring, verifying, troubleshooting, and restoring a Windows Server 2022 DHCP environment.
 
-\---
+---
 
+## Ticket Information
 
+**Ticket ID:** HD-010
 
-\## Table of Contents
+**Priority:** High
 
+**Category:** Network Services
 
+**Status:** Completed
 
-\- \[Objective](#objective)
+---
 
-\- \[Ticket Information](#ticket-information)
+## Scenario
 
-\- \[Scenario](#scenario)
-
-\- \[Environment](#environment)
-
-\- \[Initial Verification](#initial-verification)
-
-\- \[Installing the DHCP Server Role](#installing-the-dhcp-server-role)
-
-\- \[Authorizing the DHCP Server](#authorizing-the-dhcp-server)
-
-\- \[Creating the DHCP Scope](#creating-the-dhcp-scope)
-
-\- \[Verifying DHCP Lease Assignment](#verifying-dhcp-lease-assignment)
-
-\- \[Verifying Active DHCP Lease](#verifying-active-dhcp-lease)
-
-\- \[Simulating the Failure](#simulating-the-failure)
-
-\- \[Restoring the DHCP Service](#restoring-the-dhcp-service)
-
-\- \[Verification](#verification)
-
-\- \[PowerShell / Command Prompt Commands Used](#powershell--command-prompt-commands-used)
-
-\- \[Skills Demonstrated](#skills-demonstrated)
-
-\- \[Lessons Learned](#lessons-learned)
-
-
-
-\---
-
-
-
-\## Objective
-
-
-
-Simulate a common Help Desk incident where a Windows client is unable to obtain a valid IP address because the DHCP Server service is unavailable. Demonstrate the complete lifecycle of installing, configuring, verifying, troubleshooting, and restoring a Windows Server 2022 DHCP environment while documenting each step using enterprise-style technical documentation.
-
-
-
-\---
-
-
-
-\## Ticket Information
-
-
-
-| Item | Value |
-
-|------|-------|
-
-| Ticket ID | HD-010 |
-
-| Priority | High |
-
-| Category | Network Services |
-
-| Status | Completed |
-
-
-
-\---
-
-
-
-\## Scenario
-
-
-
-A user reported that their Windows workstation could no longer connect to the network after restarting their computer.
-
-
+A user contacted the Help Desk reporting that their Windows workstation could no longer connect to the network after restarting the computer.
 
 The workstation was configured to obtain an IP address automatically but failed to receive a valid DHCP lease.
 
+The Help Desk was responsible for:
 
+- Investigating the network connectivity issue.
+- Verifying DHCP server availability.
+- Installing and configuring the DHCP Server role.
+- Creating and activating a DHCP scope.
+- Restoring DHCP service after simulating a service failure.
+- Verifying successful client lease assignment.
 
-The objective was to investigate the issue, verify DHCP server availability, restore service, and confirm the client successfully obtained a new lease.
+---
 
+## Environment
 
-
-\---
-
-
-
-\## Environment
-
-
-
-| Component | Value |
-
-|-----------|-------|
-
+| Item | Value |
+|------|-------|
 | Domain | adlab.local |
-
 | Domain Controller | DC01 |
-
-| Client Computer | CLIENT01 |
-
-| Server OS | Windows Server 2022 |
-
-| Client OS | Windows 11 |
-
+| Client | CLIENT01 |
+| Server Operating System | Windows Server 2022 |
+| Client Operating System | Windows 11 |
 | Network | 192.168.66.0/24 |
-
 | DHCP Scope | 192.168.66.100 – 192.168.66.200 |
-
 | DNS Server | 192.168.66.10 |
-
 | Virtualization | VMware Workstation Pro |
 
+---
 
+## Investigation
 
-\---
-
-
-
-\# Initial Verification
-
-
-
-Verified the client network configuration before beginning troubleshooting.
-
-
+Verified the client network configuration before troubleshooting.
 
 Confirmed:
 
+- DHCP was enabled.
+- Existing IPv4 configuration.
+- Correct DNS server configuration.
+- Existing DHCP lease information.
 
+Installed the DHCP Server role using Server Manager.
 
-\- DHCP Enabled
+Authorized the DHCP server within Active Directory.
 
-\- IPv4 configuration
-
-\- DNS configuration
-
-\- Existing lease information
-
-
-
-\### Screenshot
-
-
-
-!\[Working DHCP Configuration](../Screenshots/HD-010/HD-010-01-Working-DHCP-Configuration.png)
-
-
-
-\---
-
-
-
-\# Installing the DHCP Server Role
-
-
-
-The DHCP Server role was installed using Server Manager.
-
-
-
-After installation, the server was authorized within Active Directory.
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Role Installed](../Screenshots/HD-010/HD-010-02-DHCP-Role-Installed.png)
-
-
-
-\---
-
-
-
-\# Authorizing the DHCP Server
-
-
-
-Completed the post-installation configuration wizard to authorize the DHCP server within the Active Directory domain.
-
-
-
-Authorization ensures the DHCP server is permitted to issue IP addresses to domain clients.
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Authorization](../Screenshots/HD-010/HD-010-03-DHCP-Authorized.png)
-
-
-
-\---
-
-
-
-\# Creating the DHCP Scope
-
-
-
-Configured an IPv4 scope with the following settings.
-
-
+Configured and activated an IPv4 scope using the following settings:
 
 | Setting | Value |
-
 |---------|-------|
-
 | Scope Name | Office Network |
-
 | Address Range | 192.168.66.100 – 192.168.66.200 |
-
 | Subnet Mask | 255.255.255.0 |
-
 | DNS Server | 192.168.66.10 |
-
 | Domain | adlab.local |
 
+Verified that CLIENT01 successfully obtained a DHCP lease from DC01.
 
+Confirmed the lease appeared within the DHCP Management Console.
 
-The scope was activated after configuration.
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Scope](../Screenshots/HD-010/HD-010-04-DHCP-Scope-Configured.png)
-
-
-
-\---
-
-
-
-\# Verifying DHCP Lease Assignment
-
-
-
-After configuring DHCP, CLIENT01 successfully obtained an IP address from DC01.
-
-
-
-Verified:
-
-
-
-\- DHCP Enabled
-
-\- DHCP Server
-
-\- DNS Server
-
-\- Assigned IPv4 Address
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Lease Assigned](../Screenshots/HD-010/HD-010-05-DHCP-Lease-Assigned.png)
-
-
-
-\---
-
-
-
-\# Verifying Active DHCP Lease
-
-
-
-Confirmed that the client lease appeared within the DHCP management console.
-
-
-
-Verified:
-
-
-
-\- Client hostname
-
-\- Assigned IP address
-
-\- Lease expiration
-
-\- MAC address
-
-
-
-\### Screenshot
-
-
-
-!\[Address Lease](../Screenshots/HD-010/HD-010-06-Address-Lease.png)
-
-
-
-\---
-
-
-
-\# Simulating the Failure
-
-
-
-To simulate a realistic enterprise Help Desk incident, the DHCP Server service was intentionally stopped.
-
-
-
-The client attempted to renew its IP configuration but could not contact the DHCP server.
-
-
+To simulate a realistic Help Desk incident, the DHCP Server service was intentionally stopped.
 
 Observed:
 
+- DHCP renewal failed.
+- Client could not obtain a valid lease.
+- Network connectivity was lost until the service was restored.
 
+---
 
-\- DHCP renewal failure
+## Resolution
 
-\- Request timeout
+Restarted the DHCP Server service.
 
-\- Client unable to obtain a lease
+Confirmed the service status changed to **Running**.
 
-
-
-\### Screenshot
-
-
-
-!\[DHCP Failure](../Screenshots/HD-010/HD-010-07-DHCP-Service-Failure.png)
-
-
-
-\---
-
-
-
-\# Restoring the DHCP Service
-
-
-
-Verified that the DHCP Server service was stopped.
-
-
-
-Restarted the service using Windows Services.
-
-
-
-Confirmed:
-
-
-
-\- DHCP Server service status changed to Running.
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Service Restored](../Screenshots/HD-010/HD-010-08-DHCP-Service-Restored.png)
-
-
-
-\---
-
-
-
-\# Recovery
-
-
-
-After restoring the DHCP service, CLIENT01 successfully renewed its lease.
-
-
+Renewed the client IP configuration.
 
 Verified:
 
+- Client received a valid DHCP lease.
+- Correct DNS server assigned.
+- Network connectivity restored.
+- DNS name resolution functioning normally.
 
+Performed final connectivity testing using Command Prompt and PowerShell.
 
-\- New DHCP lease
+---
 
-\- Correct DNS server
+## Validation
 
-\- Successful IP configuration
+Completed the following validation tests:
 
+- ✅ DHCP Server role installed successfully
+- ✅ DHCP server authorized in Active Directory
+- ✅ DHCP scope created and activated
+- ✅ Client successfully obtained a DHCP lease
+- ✅ DHCP lease visible in the management console
+- ✅ DHCP service failure successfully reproduced
+- ✅ DHCP service restored successfully
+- ✅ Client successfully renewed its lease
+- ✅ DNS resolution verified
+- ✅ Network connectivity fully restored
 
+---
 
-\### Screenshot
-
-
-
-!\[DHCP Recovery](../Screenshots/HD-010/HD-010-09-DHCP-Recovery.png)
-
-
-
-\---
-
-
-
-\# Verification
-
-
-
-Performed post-recovery validation.
-
-
-
-Executed:
-
-
+## PowerShell / Commands Used
 
 ```powershell
-
 ipconfig /all
-
-ping 192.168.66.10
-
-ping dc01.adlab.local
-
-nslookup dc01.adlab.local
-
-```
-
-
-
-Confirmed:
-
-
-
-\- Successful lease renewal
-
-\- Successful DNS resolution
-
-\- Successful communication with DC01
-
-
-
-\### Screenshot
-
-
-
-!\[DHCP Verification](../Screenshots/HD-010/HD-010-10-DHCP-Verification.png)
-
-
-
-\---
-
-
-
-\# PowerShell / Command Prompt Commands Used
-
-
-
-```powershell
-
-ipconfig /all
-
-
 
 ipconfig /release
 
-
-
 ipconfig /renew
-
-
 
 ping 192.168.66.10
 
-
-
 ping dc01.adlab.local
-
-
 
 nslookup dc01.adlab.local
 
-
-
 services.msc
-
 ```
 
+---
 
+## Result
 
-\---
+✔ DHCP Server successfully installed and configured
 
+✔ DHCP server authorized within Active Directory
 
+✔ DHCP scope successfully created
 
-\# Skills Demonstrated
+✔ Client successfully received a DHCP lease
 
+✔ DHCP service failure diagnosed and resolved
 
+✔ Network connectivity restored
 
-\- Windows Server Administration
+✔ DNS resolution verified
 
-\- DHCP Server Installation
+✔ Ticket resolved successfully
 
-\- DHCP Authorization
+---
 
-\- DHCP Scope Configuration
+## Lessons Learned
 
-\- DHCP Lease Management
+- Installed and authorized the DHCP Server role in Active Directory.
+- Configured and activated an IPv4 DHCP scope.
+- Verified client lease assignment using both graphical tools and command-line utilities.
+- Simulated a DHCP service outage to practice enterprise troubleshooting.
+- Restored DHCP functionality and validated full client network connectivity.
+- Reinforced the importance of verifying both IP addressing and DNS functionality after resolving network service issues.
 
-\- DNS Configuration
+---
 
-\- Windows Networking
+## Screenshots
 
-\- Client Connectivity Troubleshooting
-
-\- Network Services Administration
-
-\- Help Desk Troubleshooting
-
-\- Technical Documentation
-
-
-
-\---
-
-
-
-\# Lessons Learned
-
-
-
-This lab demonstrated the complete deployment and troubleshooting lifecycle of a Windows Server DHCP service.
-
-
-
-Key takeaways include:
-
-
-
-\- Installing and authorizing the DHCP Server role.
-
-\- Creating and activating a DHCP scope.
-
-\- Verifying client lease assignment.
-
-\- Troubleshooting DHCP service failures.
-
-\- Restoring DHCP functionality.
-
-\- Validating network connectivity after recovery.
-
-
-
-These tasks closely mirror real-world responsibilities performed by Help Desk Technicians, Desktop Support Technicians, and Junior Systems Administrators in enterprise Windows environments.
-
+- 01-Working-DHCP-Configuration.png
+- 02-DHCP-Role-Installed.png
+- 03-DHCP-Authorized.png
+- 04-DHCP-Scope-Configured.png
+- 05-DHCP-Lease-Assigned.png
+- 06-Address-Lease.png
+- 07-DHCP-Service-Failure.png
+- 08-DHCP-Service-Restored.png
+- 09-DHCP-Recovery.png
+- 10-DHCP-Verification.png
