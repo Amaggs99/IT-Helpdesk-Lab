@@ -63,20 +63,44 @@ C:\CompanyShares\Sales
 
 Created a **Welcome.txt** file inside the shared folder for access testing.
 
+### Shared Folder Created
+
+The departmental **Sales** folder was created on the server and prepared for network sharing and access testing.
+
+![Shared Folder Created](../Screenshots/HD-005/HD-005-01-Shared-Folder-Created.png)
+
 Configured NTFS permissions:
 
 - Sales → Modify
 - Administrators → Full Control
 - SYSTEM → Full Control
 
+### Configure NTFS Permissions
+
+NTFS permissions were configured to grant the **Sales** security group Modify access while maintaining Full Control for Administrators and SYSTEM.
+
+![NTFS Permissions](../Screenshots/HD-005/HD-005-02-NTFS-Permissions.png)
+
 Configured Share permissions:
 
 - Sales → Change
 - Sales → Read
 
+### Configure Share Permissions
+
+Share-level permissions were configured to allow members of the **Sales** security group to read and modify content through the network share.
+
+![Share Permissions](../Screenshots/HD-005/HD-005-03-Share-Permissions.png)
+
 Verified DNS resolution between CLIENT01 and DC01.
 
 Verified network connectivity using `ping` and `nslookup`.
+
+### Verify DNS Resolution and Network Connectivity
+
+DNS resolution and connectivity between CLIENT01 and DC01 were verified before testing access to the shared folder.
+
+![DNS and Ping Test](../Screenshots/HD-005/HD-005-05-DNS-and-Ping-Test.png)
 
 Logged into CLIENT01 using the **mwilson** domain account.
 
@@ -87,6 +111,12 @@ Successfully accessed the network share:
 ```
 
 Opened **Welcome.txt** to verify read access.
+
+### Verify Shared Folder Access
+
+The Sales network share was successfully accessed from CLIENT01 using the **mwilson** domain account, confirming that the configured permissions allowed the authorized user to access the departmental resource.
+
+![Shared Folder Access](../Screenshots/HD-005/HD-005-04-Shared-Folder-Access.png)
 
 ---
 

@@ -67,6 +67,12 @@ Selected:
 Add a local printer or network printer with manual settings
 ```
 
+### Add Printer Wizard
+
+The Add Printer Wizard was used on DC01 to begin manually installing the simulated network printer.
+
+![Add Printer Wizard](../Screenshots/HD-008/HD-008-01-Add-Printer-Wizard.png)
+
 Created a new **Local Port**.
 
 Configured the following:
@@ -75,6 +81,12 @@ Configured the following:
 Port Name:
 C:\PrintQueue
 ```
+
+### Create Local Printer Port
+
+A new local port was created for the printer using `C:\PrintQueue` as the configured port path.
+
+![Create Local Port](../Screenshots/HD-008/HD-008-02-Create-Local-Port.png)
 
 Selected the printer driver:
 
@@ -85,6 +97,12 @@ Generic
 Driver:
 Generic / Text Only
 ```
+
+### Select Printer Driver
+
+The **Generic / Text Only** driver was selected to simulate a standard enterprise printer without requiring physical printer hardware.
+
+![Select Printer Driver](../Screenshots/HD-008/HD-008-03-Select-Printer-Driver.png)
 
 Named the printer:
 
@@ -100,7 +118,25 @@ Configured the share name:
 SalesPrinter
 ```
 
+### Configure Printer Sharing
+
+The printer was configured as a shared network resource using **SalesPrinter** as the share name.
+
+![Share Printer](../Screenshots/HD-008/HD-008-04-Share-Printer.png)
+
+### Verify Printer Sharing Properties
+
+The printer's sharing properties were reviewed to confirm that sharing was enabled and the **SalesPrinter** share was correctly configured.
+
+![Printer Sharing Properties](../Screenshots/HD-008/HD-008-09-Printer-Sharing-Properties.png)
+
 Verified the printer appeared in **Devices and Printers**.
+
+### Verify Printer Installation on DC01
+
+The newly configured **SalesPrinter** was verified on the Windows Server after completing the installation and sharing configuration.
+
+![Printer Installed](../Screenshots/HD-008/HD-008-05-Printer-Installed.png)
 
 Logged into CLIENT01.
 
@@ -110,9 +146,21 @@ Opened:
 \\DC01
 ```
 
+### Verify Shared Printer from CLIENT01
+
+The shared resources available through DC01 were opened from CLIENT01 to confirm that **SalesPrinter** was visible to the domain client.
+
+![Printer Visible From Client](../Screenshots/HD-008/HD-008-06-Printer-Visible-From-Client.png)
+
 Connected to the shared printer.
 
 Verified the printer installed successfully on the Windows client.
+
+### Verify Printer Installation on CLIENT01
+
+The shared **SalesPrinter** was successfully connected and installed on CLIENT01.
+
+![Printer Installed On Client](../Screenshots/HD-008/HD-008-07-Printer-Installed-On-Client.png)
 
 Validated the deployment using PowerShell.
 
@@ -129,6 +177,12 @@ Completed the following validation tests:
 - ✅ Printer installed successfully
 - ✅ Printer verified using PowerShell
 - ✅ Shared printer accessible through **\\DC01**
+
+### PowerShell Verification
+
+PowerShell was used to verify the installed printer, configured driver, and printer sharing status.
+
+![PowerShell Verification](../Screenshots/HD-008/HD-008-08-PowerShell-Verification.png)
 
 ---
 
@@ -174,14 +228,3 @@ Displays the printer name, driver, and sharing status.
 - Learned that **Microsoft Print to PDF** cannot be shared and that the **Generic / Text Only** driver provides an effective enterprise lab simulation.
 
 ---
-
-## Screenshots
-
-- 01-Add-Printer-Wizard.png
-- 02-Create-Local-Port.png
-- 03-Select-Printer-Driver.png
-- 04-Printer-Sharing-Properties.png
-- 05-Printer-Installed.png
-- 06-Printer-Visible-From-Client.png
-- 07-Printer-Installed-On-Client.png
-- 08-PowerShell-Verification.png

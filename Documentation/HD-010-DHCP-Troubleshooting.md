@@ -62,9 +62,33 @@ Confirmed:
 - Correct DNS server configuration.
 - Existing DHCP lease information.
 
+### Verify Existing DHCP Configuration
+
+The client's network configuration was reviewed to verify that DHCP was enabled and to establish the existing IPv4, DNS, and lease information.
+
+![Working DHCP Configuration](../Screenshots/HD-010/HD-010-01-working-dhcp-configuration.png)
+
 Installed the DHCP Server role using Server Manager.
 
+### Install DHCP Server Role
+
+The DHCP Server role was installed on DC01 through Server Manager.
+
+![DHCP Role Install](../Screenshots/HD-010/HD-010-02-dhcp-role-install.png)
+
 Authorized the DHCP server within Active Directory.
+
+### Authorize DHCP Server
+
+The DHCP server was authorized within Active Directory so that it could service DHCP requests from clients on the domain network.
+
+![DHCP Authorization](../Screenshots/HD-010/HD-010-03-dhcp-authorization.png)
+
+### Verify DHCP Server Role Installation
+
+Server Manager was used to verify that the DHCP Server role had been successfully installed and was available on DC01.
+
+![Server Manager DHCP Installed](../Screenshots/HD-010/HD-010-04-Server-Manager-DHCP-Installed.png)
 
 Configured and activated an IPv4 scope using the following settings:
 
@@ -76,9 +100,27 @@ Configured and activated an IPv4 scope using the following settings:
 | DNS Server | 192.168.66.10 |
 | Domain | adlab.local |
 
+### Configure DHCP Scope
+
+The **Office Network** IPv4 scope was configured and activated using the required address range, subnet mask, DNS server, and Active Directory domain settings.
+
+![DHCP Scope Configured](../Screenshots/HD-010/HD-010-05-DHCP-Scope-Configured.png)
+
 Verified that CLIENT01 successfully obtained a DHCP lease from DC01.
 
+### Verify Client DHCP Lease
+
+CLIENT01 successfully obtained an IP address from the configured DHCP scope.
+
+![DHCP Lease Assigned](../Screenshots/HD-010/HD-010-06-DHCP-Lease-Assigned.png)
+
 Confirmed the lease appeared within the DHCP Management Console.
+
+### Verify Address Lease
+
+The DHCP Management Console confirmed that the address had been leased to CLIENT01.
+
+![Address Lease](../Screenshots/HD-010/HD-010-07-Address-Lease.png)
 
 To simulate a realistic Help Desk incident, the DHCP Server service was intentionally stopped.
 
@@ -88,6 +130,12 @@ Observed:
 - Client could not obtain a valid lease.
 - Network connectivity was lost until the service was restored.
 
+### Simulate DHCP Service Failure
+
+The DHCP Server service was intentionally stopped to reproduce a DHCP outage and test the troubleshooting and recovery process.
+
+![DHCP Service Failure](../Screenshots/HD-010/HD-010-08-DHCP-Service-Failure.png)
+
 ---
 
 ## Resolution
@@ -96,7 +144,19 @@ Restarted the DHCP Server service.
 
 Confirmed the service status changed to **Running**.
 
+### Restore DHCP Server Service
+
+The DHCP Server service was restarted and verified as **Running**, restoring DHCP availability.
+
+![DHCP Service Restored](../Screenshots/HD-010/HD-010-09-DHCP-Service-Restored.png)
+
 Renewed the client IP configuration.
+
+### Recover Client DHCP Configuration
+
+CLIENT01 renewed its network configuration after DHCP service was restored and successfully obtained a valid DHCP lease.
+
+![DHCP Recovery](../Screenshots/HD-010/HD-010-010-DHCP-Recovery.png)
 
 Verified:
 
@@ -106,6 +166,12 @@ Verified:
 - DNS name resolution functioning normally.
 
 Performed final connectivity testing using Command Prompt and PowerShell.
+
+### Final DHCP Verification
+
+Final command-line testing confirmed that DHCP addressing, DNS name resolution, and network connectivity were functioning normally after recovery.
+
+![DHCP Verification](../Screenshots/HD-010/HD-010-011-DHCP-Verification.png)
 
 ---
 
@@ -176,16 +242,3 @@ services.msc
 - Reinforced the importance of verifying both IP addressing and DNS functionality after resolving network service issues.
 
 ---
-
-## Screenshots
-
-- 01-Working-DHCP-Configuration.png
-- 02-DHCP-Role-Installed.png
-- 03-DHCP-Authorized.png
-- 04-DHCP-Scope-Configured.png
-- 05-DHCP-Lease-Assigned.png
-- 06-Address-Lease.png
-- 07-DHCP-Service-Failure.png
-- 08-DHCP-Service-Restored.png
-- 09-DHCP-Recovery.png
-- 10-DHCP-Verification.png

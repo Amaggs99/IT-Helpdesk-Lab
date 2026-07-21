@@ -85,13 +85,37 @@ Configured the following settings:
 | Reconnect at sign-in | Enabled |
 | Connect using different credentials | Disabled |
 
+### Configure Network Drive Mapping
+
+The Sales network share was configured as the **S:** drive with **Reconnect at sign-in** enabled to create a persistent mapping for the user.
+
+![Map Network Drive](../Screenshots/HD-007/HD-007-01-Map-Network-Drive.png)
+
 Completed the network drive mapping.
 
 Verified the mapped drive appeared under **This PC**.
 
+### Verify Mapped Network Drive
+
+The newly mapped **S:** drive was verified under **This PC**, confirming that the Sales network share had been successfully mapped to the workstation.
+
+![Network Drive Mapped](../Screenshots/HD-007/HD-007-02-Network-Drive-Mapped.png)
+
 Opened the mapped drive and confirmed the **Welcome.txt** file was accessible.
 
+### Verify Shared Resource Access
+
+The mapped **S:** drive was opened to confirm that the authorized user could successfully access the Sales shared folder and its contents.
+
+![Drive Access](../Screenshots/HD-007/HD-007-03-Drive-Access.png)
+
 Logged off the workstation and signed back in to verify the drive automatically reconnected.
+
+### Verify Persistent Drive Mapping
+
+After logging off and signing back in, the **S:** drive automatically reconnected, confirming that the persistent network drive configuration was functioning correctly.
+
+![Reconnected After Logon](../Screenshots/HD-007/HD-007-04-Reconnected-After-Logon.png)
 
 Validated the mapping using PowerShell.
 
@@ -108,6 +132,12 @@ Completed the following validation tests:
 - ✅ Drive automatically reconnected after sign-in
 - ✅ Verified using PowerShell
 - ✅ Verified using **net use**
+
+### PowerShell Verification
+
+PowerShell and command-line tools were used to verify the active network drive mapping and confirm that the **S:** drive was connected to the Sales network share.
+
+![PowerShell Verification](../Screenshots/HD-007/HD-007-05-PowerShell-Verification.png)
 
 ---
 
@@ -152,11 +182,3 @@ Displays active mapped network drives and network connections.
 - Network drive mappings rely on proper Active Directory authentication and SMB share permissions.
 
 ---
-
-## Screenshots
-
-- 01-Map-Network-Drive.png
-- 02-Network-Drive-Mapped.png
-- 03-Drive-Access.png
-- 04-Reconnected-After-Logon.png
-- 05-PowerShell-Verification.png

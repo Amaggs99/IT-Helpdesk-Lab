@@ -64,8 +64,28 @@ Opened **Active Directory Users and Computers (ADUC)**.
 Completed the following actions:
 
 - Removed **Sales** from the user's **Member Of** tab while retaining the default **Domain Users** membership.
+
+### Remove Sales Security Group Membership
+
+The unnecessary **Sales** security group membership was removed as part of securing the departing employee's account.
+
+![Remove Group Membership](../Screenshots/HD-004/HD-004-01-Remove-Group.png)
+
 - Disabled the Active Directory account.
+
+### Disable Active Directory Account
+
+The user account was disabled to prevent further authentication while preserving the account for auditing and administrative review.
+
+![Disabled Account](../Screenshots/HD-004/HD-004-02-Disabled-Account.png)
+
 - Moved the account into the **Disabled Users** Organizational Unit.
+
+### Move Account to Disabled Users OU
+
+The disabled account was moved from the active Users Organizational Unit into the dedicated **Disabled Users** OU.
+
+![Move to Disabled Users OU](../Screenshots/HD-004/HD-004-03-Move-DisabledOU.png)
 
 Verified the changes using PowerShell.
 
@@ -76,12 +96,24 @@ Get-ADUser ecarter -Properties Enabled |
 Select-Object Name, Enabled
 ```
 
+### Verify Disabled Account Status
+
+PowerShell was used to confirm that the Active Directory account was successfully disabled.
+
+![PowerShell Disabled Account Verification](../Screenshots/HD-004/HD-004-04-PowerShell-Disabled.png)
+
 Confirmed the account location:
 
 ```powershell
 Get-ADUser ecarter |
 Select DistinguishedName
 ```
+
+### Verify Organizational Unit Location
+
+PowerShell was used to verify the account's Distinguished Name and confirm that it was located within the **Disabled Users** Organizational Unit.
+
+![PowerShell OU Verification](../Screenshots/HD-004/HD-004-05-PowerShell-OU.png)
 
 ---
 
@@ -135,11 +167,3 @@ Select DistinguishedName
 - Verified administrative changes using both ADUC and PowerShell.
 
 ---
-
-## Screenshots
-
-- 01-Remove-Group-Membership.png
-- 02-Disable-User-Account.png
-- 03-Move-To-Disabled-Users-OU.png
-- 04-PowerShell-Verify-Account-Disabled.png
-- 05-PowerShell-Verify-Organizational-Unit.png

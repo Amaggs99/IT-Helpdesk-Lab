@@ -58,6 +58,12 @@ Verified the client's current TCP/IP configuration using:
 ipconfig /all
 ```
 
+### Verify Working DNS Configuration
+
+The client's original network configuration was reviewed to establish the correct DNS server configuration before reproducing the troubleshooting scenario.
+
+![Working DNS Configuration](../Screenshots/HD-009/HD-009-01-Working-DNS-Configuration.png)
+
 Discovered the Preferred DNS Server had been changed from:
 
 ```text
@@ -70,6 +76,12 @@ to:
 192.168.66.99
 ```
 
+### Identify Incorrect DNS Configuration
+
+The Preferred DNS Server was found to be incorrectly configured as **192.168.66.99** instead of the Domain Controller at **192.168.66.10**.
+
+![Incorrect DNS Configured](../Screenshots/HD-009/HD-009-02-Incorrect-DNS-Configured.png)
+
 Performed additional testing.
 
 Connectivity tests confirmed:
@@ -78,6 +90,18 @@ Connectivity tests confirmed:
 - `nslookup dc01` timed out while querying the incorrect DNS server.
 - Some hostname resolution continued through cached or alternate local name-resolution methods.
 - The incorrect DNS server was confirmed as the root cause.
+
+### Confirm DNS Resolution Failure
+
+A direct DNS query failed while the client was configured to use the incorrect DNS server, demonstrating that DNS name resolution was not functioning correctly.
+
+![DNS Resolution Failure](../Screenshots/HD-009/HD-009-03-DNS-Resolution-Failure.png)
+
+### Verify Basic Network Connectivity
+
+Connectivity to the Domain Controller by IP address remained operational, helping isolate the problem to DNS rather than general network connectivity.
+
+![Network Connectivity Still Working](../Screenshots/HD-009/HD-009-04-Network-Connectivity-Still-Working.png)
 
 Executed:
 
@@ -88,6 +112,12 @@ nslookup dc01
 
 Resolve-DnsName dc01
 ```
+
+### DNS Investigation
+
+Additional command-line testing was performed to compare IP connectivity with hostname resolution and confirm that the incorrect DNS configuration was responsible for the issue.
+
+![DNS Investigation](../Screenshots/HD-009/HD-009-05-DNS-Investigation.png)
 
 The investigation confirmed that basic IP connectivity remained operational while the client was configured to use an invalid DNS server. Although cached or alternate local resolution could temporarily resolve the hostname, direct DNS queries using `nslookup` failed.
 
@@ -119,6 +149,12 @@ to:
 
 Applied the updated configuration.
 
+### Restore Correct DNS Server
+
+The Preferred DNS Server was restored to **192.168.66.10**, directing CLIENT01 back to the Active Directory DNS service running on DC01.
+
+![Correct DNS Restored](../Screenshots/HD-009/HD-009-06-Correct-DNS-Restored.png)
+
 Cleared the DNS resolver cache:
 
 ```powershell
@@ -141,7 +177,19 @@ Resolve-DnsName dc01
 ping dc01
 ```
 
+### Verify DNS Resolution
+
+DNS testing was repeated after restoring the correct DNS server configuration to confirm that hostname resolution was functioning normally.
+
+![DNS Verification Success](../Screenshots/HD-009/HD-009-07-DNS-Verification-Success.png)
+
 Successfully accessed the Sales shared folder using the server hostname.
+
+### Verify Network Resource Access
+
+The Sales shared folder was successfully accessed using the **DC01 hostname**, confirming that DNS-dependent network resource access had been restored.
+
+![Shared Folder Access Restored](../Screenshots/HD-009/HD-009-08-Shared-Folder-Access-Restored.png)
 
 ---
 
@@ -156,6 +204,12 @@ Completed the following validation tests:
 - ✅ Hostname resolution restored
 - ✅ Shared folder accessible using hostname
 - ✅ PowerShell verification completed
+
+### PowerShell DNS Verification
+
+PowerShell was used as a final verification method to confirm successful DNS name resolution after remediation.
+
+![PowerShell DNS Verification](../Screenshots/HD-009/HD-009-09-PowerShell-DNS-Verification.png)
 
 ---
 
@@ -230,15 +284,3 @@ Uses PowerShell to verify DNS name resolution.
 - Verifying end-user access after remediation confirms the issue has been fully resolved.
 
 ---
-
-## Screenshots
-
-- 01-Working-DNS-Configuration.png
-- 02-Incorrect-DNS-Configured.png
-- 03-DNS-Resolution-Failure.png
-- 04-Network-Connectivity-Still-Working.png
-- 05-DNS-Investigation.png
-- 06-Correct-DNS-Restored.png
-- 07-DNS-Verification-Success.png
-- 08-Shared-Folder-Access-Restored.png
-- 09-PowerShell-DNS-Verification.png

@@ -82,9 +82,33 @@ Created a new Active Directory user account using the following information:
 | Last Name | Carter |
 | Username | ecarter |
 
+### Create New Active Directory User
+
+The New Object - User wizard was used to provision the employee account with the requested user information.
+
+![New User Wizard](../Screenshots/HD-003/HD-003-01-New-User-Wizard.png)
+
 Configured the account to require a password change at the next successful sign-in.
 
+### Verify Newly Created User Account
+
+The newly provisioned account was verified in Active Directory Users and Computers.
+
+![User Created](../Screenshots/HD-003/HD-003-02-User-Created.png)
+
 Added the user to the **Sales** Active Directory security group.
+
+### Assign Sales Security Group Membership
+
+The user's Active Directory group membership was configured to include the **Sales** security group.
+
+![User Group Membership](../Screenshots/HD-003/HD-003-03-User-Group-Membership.png)
+
+### Verify Sales Group Membership
+
+The **Sales** security group membership was reviewed to confirm that the newly created user was successfully added.
+
+![Sales Group Members](../Screenshots/HD-003/HD-003-04-Sales-Group-Members.png)
 
 Verified the group membership using both ADUC and PowerShell.
 
@@ -115,6 +139,12 @@ Completed the following validation tests:
 - ✅ Password change required at next logon
 - ✅ Group membership verified using ADUC
 - ✅ Group membership verified using PowerShell
+
+### PowerShell Verification
+
+PowerShell was used to independently verify the user's Active Directory configuration and group membership.
+
+![PowerShell Verification](../Screenshots/HD-003/HD-003-05-PowerShell-Verification.png)
 
 ---
 
@@ -155,11 +185,3 @@ Format-Table Name,GroupScope
 - Demonstrated a standard enterprise user onboarding workflow.
 
 ---
-
-## Screenshots
-
-- 01-New-User-Wizard.png
-- 02-User-Created.png
-- 03-User-Group-Membership.png
-- 04-Sales-Group-Members.png
-- 05-PowerShell-Verification.png
