@@ -58,13 +58,19 @@ Company
 
 Right-clicked **John Smith** and selected **Reset Password**.
 
+![Reset Password in Active Directory Users and Computers](../Screenshots/HD-001/HD-001-01-Reset-Password-ADUC.png)
+
 Assigned a temporary password.
 
 Enabled:
 
 - User must change password at next logon
 
+![Require User to Change Password at Next Logon](../Screenshots/HD-001/HD-001-02-Require-Password-Change.png)
+
 Applied the changes.
+
+![Client Password Change Prompt](../Screenshots/HD-001/HD-001-03-Client-Password-Change-Prompt.png)
 
 Performed the same task using PowerShell:
 
@@ -82,6 +88,8 @@ Verified the account properties:
 Get-ADUser jsmith -Properties PasswordLastSet,PasswordNeverExpires,Enabled |
 Format-List Name,Enabled,PasswordLastSet,PasswordNeverExpires
 ```
+
+![PowerShell Verification](../Screenshots/HD-001/HD-001-04-PowerShell-Verification.png)
 
 ---
 
