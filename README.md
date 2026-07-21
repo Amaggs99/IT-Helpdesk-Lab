@@ -1,3 +1,5 @@
+![IT Helpdesk Lab Banner](Assets/Banner.png)
+
 # IT Helpdesk Lab
 
 ![Status](https://img.shields.io/badge/Status-Completed-success)
